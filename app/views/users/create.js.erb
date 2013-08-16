@@ -1,0 +1,15 @@
+<% if @user.valid? %>
+  // Let the user know everything is ok here
+
+  alert(<%= escape_javascript link_to photos_path %>);
+
+  // insert a partial and remove the existing form
+<% else %>
+  // alert("<%= escape_javascript link_to photos_path %>");
+
+  // Make this suck less
+
+  // $('#new_user').prepend("<%= escape_javascript @user.errors[:email].to_yaml.to_s %>")
+
+  $('#new_user').prepend("<%= escape_javascript render partial: 'error' %>")
+<% end %>

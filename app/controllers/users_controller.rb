@@ -6,9 +6,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to photos_path
+      respond_to do |format|
+        format.js
+      end
     else
-      render action: :new
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
