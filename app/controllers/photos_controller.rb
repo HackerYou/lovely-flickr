@@ -1,9 +1,9 @@
 class PhotosController < ApplicationController
 
-  before_action :require_current_user, except: [:show, :search]
+  before_action :require_current_user, except: [:index, :show, :search]
 
   def index
-    render text: "Coming soon!"
+    @photos = Photo.limit(50)
   end
 
   def show
