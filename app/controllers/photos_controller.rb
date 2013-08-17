@@ -26,6 +26,22 @@ class PhotosController < ApplicationController
     @results = Photo.search_for params[:query]
   end
 
+  def buy
+    customer = Stripe::Customer.create(
+      email: params[:email],
+      card: params[:stripeToken]
+    )
+
+    Stripe::Charge.create(
+      customer: customer.id,
+      amount: Photo::PRICE,
+      currency: 'cad'
+    )
+  rescue Stripe::CardError => error
+      flash[:error] = error.message
+      redirect_to photo_path(params[:id])
+  end
+
   private
 
   def photo_params

@@ -48,3 +48,5 @@ gem 'mocha', group: [:test], require: false
 gem 'dynamic_form'
 gem 'carrierwave'
 gem 'scoped_search'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

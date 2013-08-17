@@ -7,7 +7,10 @@ Flickr::Application.routes.draw do
 
   resources :photos do
     collection do
-      post "search", to: "photos#search"
+      post :search
+    end
+    member do
+      post :buy
     end
   end
 
