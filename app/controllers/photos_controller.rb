@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
 
   before_action :require_current_user, except: [:index, :show, :search]
 
-  respond_to :html, :json, :xml
+  respond_to :html, :json, :xml, except: [:new]
 
   def index
     @photos = Photo.limit(50)
@@ -11,6 +11,7 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    respond_with @photo
   end
 
   def new
@@ -46,9 +47,19 @@ class PhotosController < ApplicationController
       redirect_to photo_path(params[:id])
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+
+    respond_to do |format|
+      format.html { redirect_to photos_path }
+      format.json { respond_with @photo }
+    end
+  end
+
   private
 
   def photo_params
-    params.require(:photo).permit(:title, :description, :upload)
+    params.require(:photo).permit(:title, :description, :upload, :upload_url)
   end
 end
