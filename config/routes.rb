@@ -7,7 +7,7 @@ Flickr::Application.routes.draw do
 
   resources :photos do
     collection do
-      post :search
+      get :search
     end
     member do
       post :buy

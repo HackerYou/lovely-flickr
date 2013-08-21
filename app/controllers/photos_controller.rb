@@ -2,8 +2,11 @@ class PhotosController < ApplicationController
 
   before_action :require_current_user, except: [:index, :show, :search]
 
+  respond_to :html, :json, :xml
+
   def index
     @photos = Photo.limit(50)
+    respond_with @photos
   end
 
   def show
@@ -24,6 +27,7 @@ class PhotosController < ApplicationController
 
   def search
     @results = Photo.search_for params[:query]
+    respond_with @results
   end
 
   def buy
