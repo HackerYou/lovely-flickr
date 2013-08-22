@@ -1,5 +1,2 @@
-<% @photos.each do |photo| %>
-  <div class="photo">
-    <%= image_tag photo.upload_url %>
-  </div>
-<% end %>
+<%= render @photos %>
+<%= will_paginate @photos %>

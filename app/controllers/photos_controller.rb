@@ -1,11 +1,11 @@
 class PhotosController < ApplicationController
-
   before_action :require_current_user, except: [:index, :show, :search]
 
   respond_to :html, :json, :xml, except: [:new]
 
   def index
-    @photos = Photo.limit(50)
+    @photos = Photo.paginate(:page => params[:page], :per_page => 3)
+
     respond_with @photos
   end
 
