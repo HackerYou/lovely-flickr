@@ -1,0 +1,15 @@
+<h1 data-bind="gallery.name"></h1>
+<div data-foreach-photo="gallery.photos" class="photo">
+  <img data-bind-src="photo.upload.url" />
+</div>
+
+<div class="photo-drop">Drop a photo here to add it to the gallery.</div>
+
+<h2>All My Photos</h2>
+<div data-foreach-photo="photos" class="photo" data-bind-photoid="photo.id">
+  <img data-bind-src="photo.upload.url" />
+</div>
+
+<div>
+  <a data-route="routes.galleries">Back to Galleries</a>
+</div>

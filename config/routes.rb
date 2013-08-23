@@ -4,6 +4,8 @@ Flickr::Application.routes.draw do
 
   resources :galleries
 
+  get "gallery_maker/(*redirect_path)", to: "batman#index", constraints: lambda { |request| request.format == "text/html" }
+
   resources :comments
 
   resources :users

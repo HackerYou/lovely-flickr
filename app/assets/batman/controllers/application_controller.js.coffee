@@ -1,0 +1,1 @@
+class Flickr.ApplicationController extends Batman.Controller

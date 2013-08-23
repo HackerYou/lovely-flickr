@@ -1,0 +1,12 @@
+<h1>Your Galleries</h1>
+<ul>
+  <li data-foreach-gallery="galleries">
+    <a data-bind="gallery.name" data-route="gallery"></a>
+  </li>
+</ul>
+
+<div data-showif="noGalleries">
+  You have no galleries!
+</div>
+
+<a data-route="routes.galleries.new">New Gallery</a>
