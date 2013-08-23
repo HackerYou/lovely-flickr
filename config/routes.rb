@@ -1,4 +1,9 @@
 Flickr::Application.routes.draw do
+
+  resources :gallery_items
+
+  resources :galleries
+
   resources :comments
 
   resources :users

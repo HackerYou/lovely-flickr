@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   validates :username, :email, uniqueness: true
 
   has_many :photos
+  has_many :galleries
 end
